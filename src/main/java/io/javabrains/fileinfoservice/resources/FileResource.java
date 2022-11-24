@@ -3,7 +3,9 @@ import io.javabrains.fileinfoservice.models.Path;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.print.attribute.standard.Destination;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -17,11 +19,15 @@ import java.util.zip.ZipOutputStream;
 @RequestMapping("/api")
 public class FileResource {
 
+    @PostMapping(value = "/zipReceiver")
+    public  ResponseEntity<String> zipConverter(@RequestParam("file") MultipartFile uploadfiles) throws Exception {
 
+        return new ResponseEntity<String>("Zip File Received", HttpStatus.CREATED);
+    }
 
     /* Download files as ZIP */
     @PostMapping(value = "/zipConverter")
-    public  ResponseEntity<String> zipConverter(@RequestBody List<Path> paths) throws Exception {
+    public  ResponseEntity<String> zipConverter(@RequestBody List<Path> srcPaths) throws Exception {
         try {
         /*   String file1 = "C:\\react\\Sample.iml";
             String file1 = "src/main/resources/files/test/child2.docx";
@@ -29,10 +35,11 @@ public class FileResource {
             String file3 = "src/main/resources/files/test2.txt";
             final List<String> srcFiles =  Arrays.asList(file1, file2,file3);
             List<String> srcFiles2 = fileProcessingHelper.listAllFilesFromGivenPath("src/main/resources/files"); */
-
-        final FileOutputStream fos = new FileOutputStream(Paths.get("src/main/resources/files").getParent().toAbsolutePath() + "/zipfiles.zip");
+           String destinationZipFilePath ="C:\\zipfiles";
+           String destinationZipFileName ="zipfiles.zip";
+        final FileOutputStream fos = new FileOutputStream(Paths.get(destinationZipFilePath).toAbsolutePath() + "/" +destinationZipFileName);
         ZipOutputStream zipOut = new ZipOutputStream(fos);
-        for (Path srcFile : paths) {
+        for (Path srcFile : srcPaths) {
             File fileToZip = new File(srcFile.path);
             FileInputStream fis = new FileInputStream(fileToZip);
             ZipEntry zipEntry = new ZipEntry(fileToZip.getName());

@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "fb185dec-ede8-4c95-b96a-a7796aa0ec89",
+		"name": "zip-convertor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "865546"
+	},
+	"item": [
+		{
+			"name": "localhost:8082/api/zipConverter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"path\":\"C:\\\\Users\\\\WebMobileZ\\\\Downloads\\\\event.png\"\r\n    },\r\n    {\r\n        \"path\":\"src/main/resources/files/test1.docx\"\r\n    },\r\n    {\r\n        \"path\":\"src/main/resources/files/test2.txt\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/api/zipConverter",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"zipConverter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8082/api/zipReciever",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/WebMobileZ/Downloads/event.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8082/api/zipReceiver",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"zipReceiver"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
