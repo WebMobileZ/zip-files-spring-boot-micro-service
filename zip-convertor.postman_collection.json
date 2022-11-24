@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "localhost:8082/api/zipConverter",
+			"name": "zipConverter",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -35,7 +35,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8082/api/zipReciever",
+			"name": "zipReciever",
 			"request": {
 				"method": "POST",
 				"header": [],

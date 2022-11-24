@@ -20,7 +20,7 @@ import java.util.zip.ZipOutputStream;
 public class FileResource {
 
     @PostMapping(value = "/zipReceiver")
-    public  ResponseEntity<String> zipConverter(@RequestParam("file") MultipartFile uploadfiles) throws Exception {
+    public  ResponseEntity<String> zipConverter(@RequestParam("file") File uploadfile) throws Exception {
 
         return new ResponseEntity<String>("Zip File Received", HttpStatus.CREATED);
     }
