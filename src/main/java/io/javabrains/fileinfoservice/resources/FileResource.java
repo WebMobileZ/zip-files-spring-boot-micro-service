@@ -22,7 +22,7 @@ public class FileResource {
     @PostMapping(value = "/zipReceiver")
     public  ResponseEntity<String> zipConverter(@RequestParam("file") File uploadfile) throws Exception {
 
-        return new ResponseEntity<String>(uploadfile.getPath(), HttpStatus.CREATED);
+        return new ResponseEntity<String>("Zip File Received", HttpStatus.CREATED);
     }
 
     /* Download files as ZIP */
